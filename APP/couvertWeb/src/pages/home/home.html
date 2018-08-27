@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title >
+      Welcome   {{currentUser}} 
+      <button ion-button clear small (click)="logout()" style="float: right;" color="light">logout</button>
+     
+    </ion-title>
+    
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+   
+      <div *ngIf="!base64Image">
+        <button id="map" ion-button (click)="gotomap()" round clear><ion-icon name="map"  large>
+        </ion-icon>&nbsp;  Map</button><br><br>
+       <!-- <button id="picbutton" ion-button round (click)="takePicture()" clear><ion-icon name="camera"  large>
+        </ion-icon>&nbsp; Upload by camera</button><br><br>-->
+        <div id="upload_button">     
+          <label>
+            <ion-label id="fileChoose" color="primary">
+              <input class="ionic-item" type="file" accept="image/*" (change)="changeListener($event)">
+             <ion-icon name="albums"></ion-icon>
+              <span class="btn btn-primary">&nbsp;UPLOAD FROM STORAGE</span>
+            </ion-label>
+          </label>
+        </div>
+      </div>
+      
+  <div *ngIf="base64Image">
+    <div>
+      <br><img class="image-client" [src]="base64Image" *ngIf="base64Image" />
+    </div>
+    <ion-list>
+        <ion-card >
+            <ion-item>
+                <ion-label> &nbsp; Uploader : {{couverinfo.Uploader}}</ion-label>
+              </ion-item>
+          </ion-card>
+        <ion-card *ngIf="couverinfo.Lat">
+              <ion-item>
+                  <ion-label> &nbsp; Latitude: {{couverinfo.Lat}}</ion-label>
+                </ion-item>
+            </ion-card>
+          <ion-card *ngIf="couverinfo.Lon">
+              <ion-item>
+                    <ion-label> &nbsp; longitude: {{couverinfo.Lon}}</ion-label>
+                  </ion-item>
+              </ion-card>
+              <ion-card *ngIf="couverinfo.Orientation">
+                <ion-item>
+                      <ion-label> &nbsp; Direction: {{couverinfo.Orientation}}</ion-label>
+                    </ion-item>
+                </ion-card>
+              <ion-card *ngIf="couverinfo.Phototime">
+                  <ion-item>
+                      <ion-label> &nbsp; Photoed Time : {{couverinfo.Phototime}}</ion-label>
+                    </ion-item>
+                </ion-card>
+               
+          <ion-card>
+              <ion-item>    
+                  <ion-input type="text" [(ngModel)]="couverinfo.Description" placeholder="Add description..." clearOnEdit></ion-input>
+                </ion-item>
+            </ion-card>
+            <ion-item *ngIf="!couverinfo.Phototime">
+              <ion-label floating> &nbsp; Click here to select photoed Time</ion-label>
+              <ion-datetime displayFormat="YYYY-MM-DD HH:mm:ss" [(ngModel)]="couverinfo.Phototime"></ion-datetime>
+            </ion-item>
+      </ion-list>
+      
+      <button ion-button (click)="uploadCouvert()" clear>Upload Couvert Information</button>
+      <button ion-button (click)="cancelUpload()" clear>Cancel</button>
+</div>
+
+</ion-content>

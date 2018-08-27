@@ -1,0 +1,27 @@
+page-home {
+
+}
+#upload_button {
+    display: inline-block;
+    color: blue;
+    position: absolute;
+    left: 43.5px;
+   
+  }
+  #upload_button input[type=file] {
+    display:none;
+  }
+#picbutton{
+    font-size: 1.2em;
+    font-weight:500;
+   
+}
+#fileChoose{
+    font-size: 1.2em;
+    font-weight: 500;
+    left: 50%
+}
+#map{
+    font-size: 1.2em;
+    font-weight:500
+}
