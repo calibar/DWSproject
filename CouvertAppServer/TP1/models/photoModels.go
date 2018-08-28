@@ -122,7 +122,7 @@ func AddNoLatlngCouvert(couvert Couvert_info)int{
 	}
 	_, er := stmt.Exec(couvert.Uploader,couvert.Picture,couvert.Phototime,couvert.Description)
 	if er != nil{
-		log.Fatal(er)
+		fmt.Println(er)
 		return 404 //insert failure
 	}
 	return 200
@@ -131,17 +131,19 @@ func AddCouvertInfo(couvert Couvert_info)int{
 	/*db,err := sql.Open("mysql",dataSource)*/
 	db,err:=connnection()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("e1")
+
 		return 404
 	}
 	stmt,err:=db.Prepare("insert into couverts_info(uploader,lat,lon,picture,phototime,description,orientation) values (?,?,?,?,?,?,?)")
 	if err != nil{
-		fmt.Println(err)
+		fmt.Println("e2")
 		return 404
 	}
 	_, er := stmt.Exec(couvert.Uploader,couvert.Lat,couvert.Lon,couvert.Picture,couvert.Phototime,couvert.Description,couvert.Orientation)
 	if er != nil{
-		fmt.Println(err)
+		fmt.Println("e3")
+		log.Fatal(er)
 		return 404 //insert failure
 	}
 	return 200

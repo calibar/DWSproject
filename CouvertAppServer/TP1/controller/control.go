@@ -18,7 +18,11 @@ type Logger struct {
 //login/out handler
 }
 var count=0
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+}
 func (uploader UploadPhoto)ServeHTTP(w http.ResponseWriter,req *http.Request)  {
+	enableCors(&w)
 	method:=req.Method
 	if method=="POST"{
 		var couvert models.Couvert_info
@@ -67,6 +71,7 @@ func GetMD5Hash(text string) string {
 	return hex.EncodeToString(hasher.Sum(nil))
 }
 func (logger Logger)ServeHTTP(w http.ResponseWriter,req *http.Request){
+	enableCors(&w)
 	method:=req.Method
 	if method=="GET"{
 		var username,password string
