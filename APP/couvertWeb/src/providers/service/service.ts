@@ -12,7 +12,7 @@ import {ApiProvider} from '../api/api'
 export class ServiceProvider {
   url="http://localhost:9000/"
   /*urlAndroid="http://10.0.2.2:9000/"*/
-  urlAndroid="http://localhost:9000/"
+  urlAndroid="http://167.99.185.11:9005/"
   constructor(public http: HttpClient,public api:ApiProvider) {
     console.log('Hello ServiceProvider Provider');
   }
