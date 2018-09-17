@@ -39,6 +39,7 @@ var MapPage = /** @class */ (function () {
         this.geolocation = geolocation;
         this.loading = loading;
         this.deviceOrientation = deviceOrientation;
+        this.loadingmark = "Loading Information Marks...";
         this.couvertinfoList = [];
         this.couverinfo = new __WEBPACK_IMPORTED_MODULE_3__models_models__["a" /* CouvertInfoModel */];
         this.MyLocationMap = new Map();
@@ -135,7 +136,7 @@ var MapPage = /** @class */ (function () {
                 lon = pos.lng.toFixed(6);
                 localStorage.setItem('Lon', lon);
             }, function () {
-                alert("Service failed");
+                alert("Cannot get your current location");
             });
         }
         else {
@@ -311,6 +312,7 @@ var MapPage = /** @class */ (function () {
                 });
                 /*console.log(resp)
                 console.log(this.couvertinfoList) */
+                _this.loadingmark = "DWS MAP";
                 loading.dismiss();
             }
             else {
@@ -331,7 +333,7 @@ var MapPage = /** @class */ (function () {
     ], MapPage.prototype, "mapRef", void 0);
     MapPage = MapPage_1 = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-map',template:/*ion-inline-start:"D:\DWSproject\app\couvertWeb\src\pages\map\map.html"*/'<!--\n\n  Generated template for the MapPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="primary">\n\n    <ion-title>DWS MAP <ion-icon name="ios-pin-outline" (click)="gotoMYpostionWeb()" style="float: right;"></ion-icon></ion-title>\n\n\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <div #map id="map"></div>\n\n</ion-content>\n\n'/*ion-inline-end:"D:\DWSproject\app\couvertWeb\src\pages\map\map.html"*/,
+            selector: 'page-map',template:/*ion-inline-start:"D:\DWSproject-1\APP\couvertWeb\src\pages\map\map.html"*/'<!--\n\n  Generated template for the MapPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n    <ion-navbar color="primary">\n\n        <ion-title>{{loadingmark}}\n\n            <ion-icon name="ios-pin-outline" (click)="gotoMYpostionWeb()" style="float: right;"></ion-icon>\n\n        </ion-title>\n\n\n\n    </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n    <div #map id="map"></div>\n\n</ion-content>'/*ion-inline-end:"D:\DWSproject-1\APP\couvertWeb\src\pages\map\map.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
@@ -949,7 +951,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"D:\DWSproject\app\couvertWeb\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-title >\n\n      Welcome   {{currentUser}} \n\n      <button ion-button clear small (click)="logout()" style="float: right;" color="light">logout</button>\n\n     \n\n    </ion-title>\n\n    \n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n   \n\n      <div *ngIf="!base64Image">\n\n        <button id="map" ion-button (click)="gotomap()" round clear><ion-icon name="map"  large>\n\n        </ion-icon>&nbsp;  Map</button><br><br>\n\n       <!-- <button id="picbutton" ion-button round (click)="takePicture()" clear><ion-icon name="camera"  large>\n\n        </ion-icon>&nbsp; Upload by camera</button><br><br>-->\n\n        <div id="upload_button">     \n\n          <label>\n\n            <ion-label id="fileChoose" color="primary">\n\n              <input class="ionic-item" type="file" accept="image/*" (change)="changeListener($event)">\n\n             <ion-icon name="albums"></ion-icon>\n\n              <span class="btn btn-primary">&nbsp;UPLOAD FROM STORAGE</span>\n\n            </ion-label>\n\n          </label>\n\n        </div>\n\n      </div>\n\n      \n\n  <div *ngIf="base64Image">\n\n    <div>\n\n      <br><img class="image-client" [src]="base64Image" *ngIf="base64Image" />\n\n    </div>\n\n    <ion-list>\n\n        <ion-card >\n\n            <ion-item>\n\n                <ion-label> &nbsp; Uploader : {{couverinfo.Uploader}}</ion-label>\n\n              </ion-item>\n\n          </ion-card>\n\n        <ion-card *ngIf="couverinfo.Lat">\n\n              <ion-item>\n\n                  <ion-label> &nbsp; Latitude: {{couverinfo.Lat}}</ion-label>\n\n                </ion-item>\n\n            </ion-card>\n\n          <ion-card *ngIf="couverinfo.Lon">\n\n              <ion-item>\n\n                    <ion-label> &nbsp; longitude: {{couverinfo.Lon}}</ion-label>\n\n                  </ion-item>\n\n              </ion-card>\n\n              <ion-card *ngIf="couverinfo.Orientation">\n\n                <ion-item>\n\n                      <ion-label> &nbsp; Direction: {{couverinfo.Orientation}}</ion-label>\n\n                    </ion-item>\n\n                </ion-card>\n\n              <ion-card *ngIf="couverinfo.Phototime">\n\n                  <ion-item>\n\n                      <ion-label> &nbsp; Photoed Time : {{couverinfo.Phototime}}</ion-label>\n\n                    </ion-item>\n\n                </ion-card>\n\n               \n\n          <ion-card>\n\n              <ion-item>    \n\n                  <ion-input type="text" [(ngModel)]="couverinfo.Description" placeholder="Add description..." clearOnEdit></ion-input>\n\n                </ion-item>\n\n            </ion-card>\n\n            <ion-item *ngIf="!couverinfo.Phototime">\n\n              <ion-label floating> &nbsp; Click here to select photoed Time</ion-label>\n\n              <ion-datetime displayFormat="YYYY-MM-DD HH:mm:ss" [(ngModel)]="couverinfo.Phototime"></ion-datetime>\n\n            </ion-item>\n\n      </ion-list>\n\n      \n\n      <button ion-button (click)="uploadCouvert()" clear>Upload Couvert Information</button>\n\n      <button ion-button (click)="cancelUpload()" clear>Cancel</button>\n\n</div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\DWSproject\app\couvertWeb\src\pages\home\home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"D:\DWSproject-1\APP\couvertWeb\src\pages\home\home.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n\n    <ion-title >\n\n      Welcome   {{currentUser}} \n\n      <button ion-button clear small (click)="logout()" style="float: right;" color="light">logout</button>\n\n     \n\n    </ion-title>\n\n    \n\n  </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content padding>\n\n   \n\n      <div *ngIf="!base64Image">\n\n        <button id="map" ion-button (click)="gotomap()" round clear><ion-icon name="map"  large>\n\n        </ion-icon>&nbsp;  Map</button><br><br>\n\n       <!-- <button id="picbutton" ion-button round (click)="takePicture()" clear><ion-icon name="camera"  large>\n\n        </ion-icon>&nbsp; Upload by camera</button><br><br>-->\n\n        <div id="upload_button">     \n\n          <label>\n\n            <ion-label id="fileChoose" color="primary">\n\n              <input class="ionic-item" type="file" accept="image/*" (change)="changeListener($event)">\n\n             <ion-icon name="albums"></ion-icon>\n\n              <span class="btn btn-primary">&nbsp;UPLOAD FROM STORAGE</span>\n\n            </ion-label>\n\n          </label>\n\n        </div>\n\n      </div>\n\n      \n\n  <div *ngIf="base64Image">\n\n    <div>\n\n      <br><img class="image-client" [src]="base64Image" *ngIf="base64Image" />\n\n    </div>\n\n    <ion-list>\n\n        <ion-card >\n\n            <ion-item>\n\n                <ion-label> &nbsp; Uploader : {{couverinfo.Uploader}}</ion-label>\n\n              </ion-item>\n\n          </ion-card>\n\n        <ion-card *ngIf="couverinfo.Lat">\n\n              <ion-item>\n\n                  <ion-label> &nbsp; Latitude: {{couverinfo.Lat}}</ion-label>\n\n                </ion-item>\n\n            </ion-card>\n\n          <ion-card *ngIf="couverinfo.Lon">\n\n              <ion-item>\n\n                    <ion-label> &nbsp; longitude: {{couverinfo.Lon}}</ion-label>\n\n                  </ion-item>\n\n              </ion-card>\n\n              <ion-card *ngIf="couverinfo.Orientation">\n\n                <ion-item>\n\n                      <ion-label> &nbsp; Direction: {{couverinfo.Orientation}}</ion-label>\n\n                    </ion-item>\n\n                </ion-card>\n\n              <ion-card *ngIf="couverinfo.Phototime">\n\n                  <ion-item>\n\n                      <ion-label> &nbsp; Photoed Time : {{couverinfo.Phototime}}</ion-label>\n\n                    </ion-item>\n\n                </ion-card>\n\n               \n\n          <ion-card>\n\n              <ion-item>    \n\n                  <ion-input type="text" [(ngModel)]="couverinfo.Description" placeholder="Add description..." clearOnEdit></ion-input>\n\n                </ion-item>\n\n            </ion-card>\n\n            <ion-item *ngIf="!couverinfo.Phototime">\n\n              <ion-label floating> &nbsp; Click here to select photoed Time</ion-label>\n\n              <ion-datetime displayFormat="YYYY-MM-DD HH:mm" [(ngModel)]="couverinfo.Phototime"></ion-datetime>\n\n            </ion-item>\n\n      </ion-list>\n\n      \n\n      <button ion-button (click)="uploadCouvert()" clear>Upload Information</button>\n\n      <button ion-button (click)="cancelUpload()" clear>Cancel</button>\n\n</div>\n\n\n\n</ion-content>\n\n'/*ion-inline-end:"D:\DWSproject-1\APP\couvertWeb\src\pages\home\home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_3__providers_service_service__["a" /* ServiceProvider */],
@@ -1147,7 +1149,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\DWSproject\app\couvertWeb\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"D:\DWSproject\app\couvertWeb\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"D:\DWSproject-1\APP\couvertWeb\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"D:\DWSproject-1\APP\couvertWeb\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -1353,6 +1355,9 @@ var LoginPage = /** @class */ (function () {
                 else if (data == "300") {
                     alert("no such a user");
                 }
+                else {
+                    alert("connection error");
+                }
             }, function (err) {
                 console.log(err.error);
             });
@@ -1365,7 +1370,7 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"D:\DWSproject\app\couvertWeb\src\pages\login\login.html"*/'<!--\n\n  Generated template for the LoginPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="primary">\n\n    <ion-title>Login</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n\n\n    <ion-item>\n\n      <ion-label stacked>Username</ion-label>\n\n      <ion-input type="text" [(ngModel)]="User.username"></ion-input>\n\n    </ion-item>\n\n  \n\n    <ion-item>\n\n      <ion-label stacked>Password</ion-label>\n\n      <ion-input type="password" [(ngModel)]="User.pwd"></ion-input>\n\n    </ion-item>\n\n  \n\n  </ion-list>\n\n  <button ion-button outline (click)="login()" >Login</button>\n\n  <button ion-button outline (click)="signup()">sign up</button>\n\n  <!--<button ion-button outline (click)="test()">test</button>-->\n\n  <img src="assets/imgs/Image-1.jpg">\n\n</ion-content>\n\n'/*ion-inline-end:"D:\DWSproject\app\couvertWeb\src\pages\login\login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"D:\DWSproject-1\APP\couvertWeb\src\pages\login\login.html"*/'<!--\n\n  Generated template for the LoginPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar color="primary">\n\n    <ion-title>Login</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n\n\n    <ion-item>\n\n      <ion-label stacked>Username</ion-label>\n\n      <ion-input type="text" [(ngModel)]="User.username"></ion-input>\n\n    </ion-item>\n\n  \n\n    <ion-item>\n\n      <ion-label stacked>Password</ion-label>\n\n      <ion-input type="password" [(ngModel)]="User.pwd"></ion-input>\n\n    </ion-item>\n\n  \n\n  </ion-list>\n\n  <button ion-button outline (click)="login()" >Login</button>\n\n  <button ion-button outline (click)="signup()">sign up</button>\n\n  <!--<button ion-button outline (click)="test()">test</button>-->\n\n  <img src="assets/imgs/Image-1.jpg">\n\n</ion-content>\n\n'/*ion-inline-end:"D:\DWSproject-1\APP\couvertWeb\src\pages\login\login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
