@@ -84,6 +84,8 @@ export class LoginPage {
         alert("Password not matched")
       }else if(data=="300"){
         alert("no such a user")
+      }else {
+        alert("connection error")
       }
       },err=>{
         console.log(err.error)
