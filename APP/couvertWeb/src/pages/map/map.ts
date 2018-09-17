@@ -36,6 +36,7 @@ export class MapPage {
   public MyLocationMap:any
   private subscription:any
   public CurrentDirection:any
+  private loadingmark="Loading Information Marks..."
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private platform: Platform,
@@ -351,6 +352,7 @@ export class MapPage {
         });
         /*console.log(resp)
         console.log(this.couvertinfoList) */
+        this.loadingmark="DWS MAP"
        loading.dismiss()
         
      }else{
