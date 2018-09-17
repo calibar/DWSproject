@@ -217,7 +217,7 @@ export class HomePage {
         var Lat = EXIF.getTag(this, "GPSLatitude"); 
         var LatRef=EXIF.getTag(this,'GPSLatitudeRef')
         var Lon = EXIF.getTag(this, 'GPSLongitude'); 
-        var LonRef=EXIF.getTag(this,'	GPSLongitudeRef')
+        var LonRef=EXIF.getTag(this,'GPSLongitudeRef')
         photoedTime=EXIF.getTag(this,'DateTimeOriginal');
         if(Lat&&Lon){
           if(typeof(Lat[0].numerator)!="undefined"){
@@ -240,6 +240,7 @@ export class HomePage {
           if(LonRef=="W"){
             lon=-lon;
           }
+          console.log(LonRef)
           latitude=lat.toFixed(6);
           longitude=lon.toFixed(6);     
           couverinfo.Lat=latitude;
