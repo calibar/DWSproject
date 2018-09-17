@@ -143,7 +143,7 @@ export class MapPage {
        lon=pos.lng.toFixed(6);
        localStorage.setItem('Lon',lon)
       }, function() {
-        alert("Service failed")
+        alert("Cannot get your current location")
       });
 
     }else{
