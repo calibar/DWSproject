@@ -1,9 +1,11 @@
+import { SignupPage } from './../signup/signup';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {UserInfoModel} from "../../models/models"
 import {ServiceProvider} from "../../providers/service/service"
 import { HomePage } from '../home/home';
 import { Geolocation } from '@ionic-native/geolocation';
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -19,6 +21,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 export class LoginPage {
   public User: UserInfoModel
   public home: any
+  public Signuppage:any
   public lat:number
   public lon:number
   constructor(public navCtrl: NavController, 
@@ -27,6 +30,7 @@ export class LoginPage {
     private geolocation:Geolocation) {
       this.User= new UserInfoModel
       this.home=HomePage
+      this.Signuppage=SignupPage
   }
 
   ionViewDidLoad() {
@@ -91,6 +95,9 @@ export class LoginPage {
         console.log(err.error)
       })
     }
+  }
+  gotoSignup(){
+    this.navCtrl.push(this.Signuppage)
   }
   test(){
     this.getLocation();

@@ -1,3 +1,4 @@
+import { SignupPage } from './../../../../couvertWeb/src/pages/signup/signup';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {UserInfoModel} from "../../models/models"
@@ -21,12 +22,14 @@ export class LoginPage {
   public home: any
   public lat:number
   public lon:number
+  public Signuppage:any
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public service:ServiceProvider,
     private geolocation:Geolocation) {
       this.User= new UserInfoModel
       this.home=HomePage
+      this.Signuppage=SignupPage
   }
 
   ionViewDidLoad() {
@@ -91,6 +94,9 @@ export class LoginPage {
         console.log(err.error)
       })
     }
+  }
+  gotoSignup(){
+    this.navCtrl.push(this.Signuppage)
   }
   test(){
     this.getLocation();

@@ -1,3 +1,4 @@
+import { SignupPage } from './../pages/signup/signup';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule ,LoadingController} from 'ionic-angular';
@@ -30,7 +31,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     MyApp,
     HomePage,
     LoginPage,
-    MapPage
+    MapPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     MyApp,
     HomePage,
     LoginPage,
-    MapPage
+    MapPage,
+    SignupPage
   ],
   providers: [
     StatusBar,

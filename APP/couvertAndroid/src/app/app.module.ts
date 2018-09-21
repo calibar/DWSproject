@@ -1,10 +1,10 @@
+import { SignupPage } from './../pages/signup/signup';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule ,LoadingController} from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { DeviceOrientation} from '@ionic-native/device-orientation';
-
 import {
   GoogleMaps,
   GoogleMap,
@@ -30,7 +30,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     MyApp,
     HomePage,
     LoginPage,
-    MapPage
+    MapPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +44,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     MyApp,
     HomePage,
     LoginPage,
-    MapPage
+    MapPage,
+    SignupPage
   ],
   providers: [
     StatusBar,

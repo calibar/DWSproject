@@ -6,29 +6,32 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary">
-    <ion-title>Login</ion-title>
-  </ion-navbar>
+    <ion-navbar color="primary">
+        <ion-title>Login</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list>
+    <ion-list>
 
-    <ion-item>
-      <ion-label stacked>Username</ion-label>
-      <ion-input type="text" [(ngModel)]="User.username"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label stacked>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="User.pwd"></ion-input>
-    </ion-item>
-  
-  </ion-list>
-  <button ion-button outline (click)="login()" >Login</button>
-  <button ion-button outline (click)="signup()">sign up</button>
-  <!--<button ion-button outline (click)="test()">test</button>-->
-  <img src="assets/imgs/Image-1.jpg">
+        <ion-item>
+            <ion-label stacked>Username</ion-label>
+            <ion-input type="text" [(ngModel)]="User.username"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Password</ion-label>
+            <ion-input type="password" [(ngModel)]="User.pwd"></ion-input>
+        </ion-item>
+
+    </ion-list>
+
+    <div style="text-align: center"> <button ion-button outline (click)="login()" full>Login</button><br><button ion-button (click)="gotoSignup()" clear>click here to signup</button></div>
+
+    <!-- <button ion-button outline (click)="signup()">sign up</button>-->
+    <!--<button ion-button outline (click)="test()">test</button>-->
+    <div style="text-align: center"><img src="assets/imgs/Image-1.jpg"></div>
+
 </ion-content>

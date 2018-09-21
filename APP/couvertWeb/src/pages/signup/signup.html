@@ -1,5 +1,5 @@
 <!--
-  Generated template for the LoginPage page.
+  Generated template for the SignupPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -7,7 +7,7 @@
 <ion-header>
 
     <ion-navbar color="primary">
-        <ion-title>Login</ion-title>
+        <ion-title>Signup</ion-title>
     </ion-navbar>
 
 </ion-header>
@@ -25,10 +25,10 @@
             <ion-label stacked>Password</ion-label>
             <ion-input type="password" [(ngModel)]="User.pwd"></ion-input>
         </ion-item>
-
+        <ion-item>
+            <ion-label stacked>Confirm Password</ion-label>
+            <ion-input type="password" [(ngModel)]="ConfirmPWD"></ion-input>
+        </ion-item>
     </ion-list>
-    <button ion-button outline (click)="login()" full>Login</button>
-    <div style="text-align: center"> <button ion-button outline (click)="login()" full>Login</button><br><button ion-button (click)="gotoSignup()" clear>click here to signup</button></div>
-    <!--<button ion-button outline (click)="test()">test</button>-->
-    <div style="text-align: center"><img src="assets/imgs/Image-1.jpg"></div>
+    <button ion-button outline (click)="signup()" full>sign up</button>
 </ion-content>
